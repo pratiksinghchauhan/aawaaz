@@ -1,13 +1,13 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Disintermediate</title>
+    <title>Awaaz</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://parsif.al/static/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://parsif.al/static/css/parsifal.css?v=2">
     <link rel="stylesheet" href="https://parsif.al/static/css/selectize.bootstrap3.css">
-
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -31,56 +31,70 @@
 
     <style>
 
-.gallery-title
-{
-    font-size: 36px;
-    color: #42B32F;
-    text-align: center;
-    font-weight: 500;
-    margin-bottom: 70px;
-}
-.gallery-title:after {
-    content: "";
-    position: absolute;
-    width: 7.5%;
-    left: 46.5%;
-    height: 45px;
-    border-bottom: 1px solid #5e5e5e;
-}
-.filter-button
-{
-    font-size: 18px;
-    border: 1px solid #42B32F;
-    border-radius: 5px;
-    text-align: center;
-    color: #42B32F;
-    margin-bottom: 30px;
-
-}
-.filter-button:hover
-{
-    font-size: 18px;
-    border: 1px solid #42B32F;
-    border-radius: 5px;
-    text-align: center;
-    color: #ffffff;
-    background-color: #42B32F;
-
-}
-.btn-default:active .filter-button:active
-{
-    background-color: #42B32F;
-    color: white;
+.star-rating {
+  font-size: 40px;
+  /* text-align: center; */
+  line-height:32px;
 }
 
-.port-image
+.star-rating .fa-star{color: yellow;}
+
+.glyphicon { margin-right:5px; }
+.thumbnail
 {
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.item.list-group-item
+{
+    float: none;
     width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+.item.list-group-item:nth-of-type(odd):hover,.item.list-group-item:hover
+{
+    background: #428bca;
 }
 
-.gallery_product
+.item.list-group-item .list-group-image
 {
-    margin-bottom: 30px;
+    margin-right: 10px;
+}
+.item.list-group-item .thumbnail
+{
+    margin-bottom: 0px;
+}
+.item.list-group-item .caption
+{
+    padding: 9px 9px 0px 9px;
+}
+.item.list-group-item:nth-of-type(odd)
+{
+    background: #eeeeee;
+}
+
+.item.list-group-item:before, .item.list-group-item:after
+{
+    display: table;
+    content: " ";
+}
+
+.item.list-group-item img
+{
+    float: left;
+}
+.item.list-group-item:after
+{
+    clear: both;
+}
+.list-group-item-text
+{
+    margin: 0 0 11px;
 }
 
     </style>
@@ -98,7 +112,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a href="/" class="navbar-brand value-brand"  data-toggle="modal" data-target="#myModal">Disintermediate</a>
+          <a href="/" class="navbar-brand value-brand" >Awaaz</a>
         </div>
         <div class="collapse navbar-collapse" id="header-menu">
         </div>
@@ -118,13 +132,13 @@
   
     <div class="row cover">
       <div class="col-md-7">
-        <h1>Domain Trading Never been Easier!</h1>
-        <p class="lead">Domain Transfer is a labour intensive task which involves a lot of middlemen and requires huge amount of time and patience  <strong>Disintermediate</strong> will help automating the complete stuff, Give us a try and you will feel, domain trading would have never been easier!</p>
+        <h1>Be a Responsible Citizen of New India!</h1>
+        <p class="lead">We help the Citizens of new India vote for change, <strong>Aawaaz</strong> is  a platform which helps you raise your voice if your contractor is not working,Taxpayers can now ensure their money is being utilised properly. </p>
       </div>
       <div class="col-md-5">
           <br><br>
-        <p class="lead"> Give us a try and you will never think of the old way again, hit the button blow its only clicks away.</p>
-        <button class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal">Add Listing!</button>   
+        <p class="lead"> Keep your aadhar card handy! You can only vote in the district that is mentioned in your aadhar card</p>
+        <button class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#myModal">Go Vote for Change!</button>   
       </div>
     </div>
   
@@ -139,21 +153,31 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Create a transfer Request</h4>
+                  <h4 class="modal-title">Vote For Change</h4>
+                  <p style="color: red">PS: Vote for only your area, we verify the address on your aadhar card to count the voteto upload a clear picture, we request you  Thanks!</p>
                 </div>
                 <div class="modal-body">
                         <form method="POST" action="/">
                             {% csrf_token %}
-                                <input type="text" class="form-control" name="seller" placeholder="Seller Name"><br>
-                                <input type="text" class="form-control" name="buyer" placeholder="Buyer Name"><br>
-                                <input type="text" class="form-control" name="domain" placeholder="Domain Name"><br>
-                                <input type="text" class="form-control" name="mobile-buyer" placeholder="Mobile Number of Buyer"><br>
-                                <input type="text" class="form-control" name="mobile-seller" placeholder="Mobile Number of Seller"><br>
-                                <input type="text" class="form-control" name="payer-va" placeholder="Buyer Virtual Address"><br>
-                                <input type="text" class="form-control" name="payee-va" placeholder="Seller Virtual Address"><br>
-                                <input type="text" class="form-control" name="payee-ac" placeholder="Seller Account Number"><br>
-                                <input type="text" class="form-control" name="amount" placeholder="Amount"><br>
-                                <input type="submit" name="Done" class="btn btn-success btn-lg btn-block">
+                            <div class="container">
+                                <div class="row">
+                                  <div class="col-lg-12">
+                                    <div class="star-rating">
+                                      <span class="fa fa-star-o" data-rating="1"></span>
+                                      <span class="fa fa-star-o" data-rating="2"></span>
+                                      <span class="fa fa-star-o" data-rating="3"></span>
+                                      <span class="fa fa-star-o" data-rating="4"></span>
+                                      <span class="fa fa-star-o" data-rating="5"></span>
+                                      <input type="hidden" name="whatever1" class="rating-value" value="2.56">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              Name:
+                                <input type="text" class="form-control" name="name" placeholder="Name"><br>
+                              Aadhar Card:
+                              <input type="file" accept="image/png, image/jpeg, image/gif" name="image"/><br>
+                              <input type="submit" name="Done" class="btn btn-success btn-lg btn-block">
                         </form>
                 </div>
               </div>
@@ -164,55 +188,147 @@
     <section class="features">
       <div class="container">
         <article>
-          <h2>Our Listings</h2>
+          <h2>Listed Yojnas</h2>
 
-          <div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-4 filter hdpe">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-4 filter sprinkle">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-4 filter hdpe">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            
-            <div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-4 filter irrigation">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-4 filter spray">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-4 filter irrigation">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-4 filter spray">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-4 filter irrigation">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>
-
-            <div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-4 filter irrigation">
-                <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-            </div>        
-            <div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-4 filter spray">
-                    <img src="http://fakeimg.pl/365x365/" class="img-responsive">
+          <div class="container">
+            <div class="well well-sm">
+                <strong>Display</strong>
+                <div class="btn-group">
+                    <a href="#" id="list" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list">
+                    </span>List</a> <a href="#" id="grid" class="btn btn-default btn-sm"><span
+                        class="glyphicon glyphicon-th"></span>Grid</a>
                 </div>
-    
-                <div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-4 filter irrigation">
-                    <img src="http://fakeimg.pl/365x365/" class="img-responsive">
+            </div>
+            <div id="products" class="row list-group">
+                <div class="item  col-xs-4 col-lg-4">
+                    <div class="thumbnail">
+                        <img class="group list-group-image" src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="" />
+                        <div class="caption">
+                            <h4 class="group inner list-group-item-heading">
+                                Yojna</h4>
+                            <p class="group inner list-group-item-text">
+                                Area:&nbsp&nbsp<strong>New Delhi</strong><br>
+                                Votes:&nbsp&nbsp<strong>0</strong></p><br></p>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <p class="lead">
+                                        Rs 2 lakhs</p>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success" data-toggle="modal" data-target="#myModal">Vote for it</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-    
-                <div class="gallery_product col-lg-3 col-md-3 col-sm-3 col-xs-4 filter irrigation">
-                    <img src="http://fakeimg.pl/365x365/" class="img-responsive">
-                </div>         
+                <div class="item  col-xs-4 col-lg-4">
+                    <div class="thumbnail">
+                        <img class="group list-group-image" src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="" />
+                        <div class="caption">
+                            <h4 class="group inner list-group-item-heading">
+                                Yojna</h4>
+                            <p class="group inner list-group-item-text">
+                                Area:&nbsp&nbsp<strong>New Delhi</strong><br>
+                                Votes:&nbsp&nbsp<strong>0</strong></p><br></p>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <p class="lead">
+                                        Rs 1.5 Lakhs</p>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success" href="http://www.jquery2dotnet.com">Vote for it</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item  col-xs-4 col-lg-4">
+                    <div class="thumbnail">
+                        <img class="group list-group-image" src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="" />
+                        <div class="caption">
+                            <h4 class="group inner list-group-item-heading">
+                                Yojna</h4>
+                            <p class="group inner list-group-item-text">
+                                Area:&nbsp&nbsp<strong>New Delhi</strong><br>
+                                Votes:&nbsp&nbsp<strong>0</strong></p><br></p>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <p class="lead">
+                                        Rs 50 thousand</p>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success" href="http://www.jquery2dotnet.com">Vote for it</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item  col-xs-4 col-lg-4">
+                    <div class="thumbnail">
+                        <img class="group list-group-image" src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="" />
+                        <div class="caption">
+                            <h4 class="group inner list-group-item-heading">
+                                Yojna</h4>
+                            <p class="group inner list-group-item-text">
+                                Area:&nbsp&nbsp<strong>New Delhi</strong><br>
+                                Votes:&nbsp&nbsp<strong>0</strong></p><br></p>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <p class="lead">
+                                        Rs 25 thousand</p>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success" href="http://www.jquery2dotnet.com">Vote for it</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item  col-xs-4 col-lg-4">
+                    <div class="thumbnail">
+                        <img class="group list-group-image" src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="" />
+                        <div class="caption">
+                            <h4 class="group inner list-group-item-heading">
+                                Yojna</h4>
+                            <p class="group inner list-group-item-text">
+                                Area:&nbsp&nbsp<strong>New Delhi</strong><br>
+                                Votes:&nbsp&nbsp<strong>0</strong></p><br></p>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <p class="lead">
+                                        Rs 31 thousand</p>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success" href="http://www.jquery2dotnet.com">Vote for it</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item  col-xs-4 col-lg-4">
+                    <div class="thumbnail">
+                        <img class="group list-group-image" src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="" />
+                        <div class="caption">
+                            <h4 class="group inner list-group-item-heading">
+                                Yojna</h4>
+                            <p class="group inner list-group-item-text">
+                                Area:&nbsp&nbsp<strong>New Delhi</strong><br>
+                                Votes:&nbsp&nbsp<strong>0</strong></p><br></p>
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <p class="lead">
+                                        Rs 1.8 lakhs</p>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <a class="btn btn-success" href="http://www.jquery2dotnet.com">Vote for it</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                
         </article>
       </div>
     </section>
@@ -223,7 +339,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-6 legal">
-          <span>© 2014-2018 Disintermediate Ltd.</span>
+          <span>© 2014-2018 Awaaz Ltd.</span>
         </div>
         <div class="col-xs-6 social">
           <a href="https://github.com/vitorfs/parsifal" target="_blank" data-toggle="tooltip" title="" data-placement="top" data-original-title="Github"><span class="fa fa-github"></span></a>
@@ -260,5 +376,35 @@
     <script src="/static/js/selectize.min.js"></script>
     <script src="/static/js/expanding.js"></script>
     <script src="/static/js/parsifal.js?v=2"></script>
+   
+   <script>
+      $(document).ready(function() {
+    $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
+    $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
+  });
+
+  var $star_rating = $('.star-rating .fa');
+
+var SetRatingStar = function() {
+  return $star_rating.each(function() {
+    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
+      return $(this).removeClass('fa-star-o').addClass('fa-star');
+    } else {
+      return $(this).removeClass('fa-star').addClass('fa-star-o');
+    }
+  });
+};
+
+$star_rating.on('click', function() {
+  $star_rating.siblings('input.rating-value').val($(this).data('rating'));
+  return SetRatingStar();
+});
+
+SetRatingStar();
+$(document).ready(function() {
+
+});
+
+    </script>
   </body>
   </html>
