@@ -32,3 +32,6 @@ def transferDomain(request):
     if request.method == "POST":
         return render(request,"index.html",{"msg":"Your Vote is recorded! Thanks for voting"})
     return render(request,"index.html",{"msg":""})
+
+def contractorDashboard(request):
+    return render(request,"dashboard.html")

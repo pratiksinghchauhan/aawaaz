@@ -106,7 +106,7 @@ h2{
 }
 
 .carimages{
-  height:300px;
+  height:300px !important;
   width: 525px;
 }
 .item-carousel{
@@ -132,11 +132,40 @@ h2{
     opacity:1;
     filter: alpha(opacity=100); /* ie fix */
 }
+.mainimage{
+  height: 238px !important;
+  width: 356px;
+}
 
     </style>
     
   </head>
   <body>
+
+      <div id="login-modal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Contractor Login</h4>
+              </div>
+              <div class="modal-body">
+                      <form method="POST" action="/profile/">
+                          {% csrf_token %}
+                            Username:
+                              <input type="text" class="form-control" name="name" placeholder="Username"><br>
+                            Password:
+                              <input type="password" class="form-control" name="name" placeholder="Password"><br>                   
+                            <input type="submit" value="Submit" name="Done" class="btn btn-success btn-lg btn-block">
+                      </form>
+              </div>
+            </div>
+        
+          </div>
+        </div>
+
     <div class="wrapper">
       <header>
     <nav class="navbar navbar-default">
@@ -154,6 +183,9 @@ h2{
         </div>
       </div>
     </nav>
+    <div style="text-align: right;margin:30px;">
+     <a href="#"  data-toggle="modal" data-target="#login-modal"><span class="glyphicon glyphicon-log-in"></span> Login as Contractor</a>
+    </div>
   </header>
       
       
@@ -236,19 +268,19 @@ h2{
                                <!-- Carousel items -->
                                 <div class="carousel-inner">
                                     <div class="active item item-carousel carousel-fade">
-                                      <img class="carimages" src="http://www.worldhighways.com/_resources/assets/inline/custom/14/40376.jpg">
+                                      <img class="carimages" src="http://omms.nic.in/Content/img/1.jpg">
                                         <div class="carousel-caption">
                                           <p>Latest Images</p>
                                         </div>
                                     </div>
                                     <div class="item item-carousel carousel-fade">
-                                        <img class="carimages" src= "https://www.nooteboom.com/wp-content/uploads/roadconstructionmachinery.jpg">
+                                        <img class="carimages" src= "data:image/jpeg;base64,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">
                                         <div class="carousel-caption">
                                             <p>Latest Images</p>
                                         </div>
                                     </div>
                                     <div class="item item-carousel carousel-fade">
-                                        <img class="carimages" src="https://i.ytimg.com/vi/MgvUDs5tcu0/maxresdefault.jpg">
+                                        <img class="carimages" src="https://cdn.downtoearth.org.in/dte/userfiles/images/18-20140228-01.jpg">
                                         <div class="carousel-caption">
                                             <p>Latest Images</p>
                                         </div>
@@ -263,13 +295,49 @@ h2{
                                 </a>
                             </div>
                         </div>
-                        <p> The NHDP represents 49,260 km of roads and highways work and construction in order to boost economic development of the country. The government has planned to end the NHDP program in early 2018 and consume the ongoing projects under a larger Bharatmala project. </p>
-                        <h3>Phase 1 Voting Results</h3>
-                        <p>Amount Released: <strong>1.5 lakhs</strong></p>
-                        <p>5 Stars :&nbsp;&nbsp; <strong>2</strong> </p>
-                        <p>3 & 4 Stars :&nbsp;&nbsp; <strong>3</strong> </p>
-                        <p>1 & 2 Stars :&nbsp;&nbsp; <strong>1</strong> </p>
-                        <p>Contractor Report: &nbsp;&nbsp; <strong>Good</strong></p>
+    
+
+                        <ul class="nav nav-tabs">
+                          <li class="active"><a data-toggle="tab" href="#home">Details</a></li>
+                          <li><a data-toggle="tab" href="#menu1">Phase 1</a></li>
+                          <li><a data-toggle="tab" href="#menu2">Phase 2</a></li>
+                          <li><a data-toggle="tab" href="#menu3">Phase 3</a></li>
+                          <li><a data-toggle="tab" href="#menu4">Phase 4</a></li>
+                          <li><a data-toggle="tab" href="#menu5">Phase 5</a></li>
+                        </ul>
+                      
+                        <div class="tab-content">
+                          <div id="home" class="tab-pane fade in active">
+                            <p>The NHDP represents 49,260 km of roads and highways work and construction in order to boost economic development of the country. The government has planned to end the NHDP program in early 2018 and consume the ongoing projects under a larger Bharatmala project. </p>
+                            <p>Total Population:&nbsp;&nbsp; <strong>2000</strong></p>
+                            <p>Voting Phases:&nbsp;&nbsp; <strong>5</strong></p>
+                            <p>Project Status:&nbsp;&nbsp; <strong>Voting on for phase 3</strong></p>
+                          </div>
+                          <div id="menu1" class="tab-pane fade">
+                            <p>Money to be Released:&nbsp;&nbsp; <strong>Rs40000</strong></p>
+                            <p>Status:&nbsp;&nbsp; <strong>Voting Done</strong></p>
+                            <p>Votes in Favour:&nbsp;&nbsp; 80%</p>
+                            <p style="color:green">Amount Released</p>
+                          </div>
+                          <div id="menu2" class="tab-pane fade">
+                            <p>Money to be Released:&nbsp;&nbsp; <strong>Rs40000</strong></p>
+                            <p>Status:&nbsp;&nbsp; <strong>Voting Done</strong></p>
+                            <p>Votes in Favour:&nbsp;&nbsp; 40%</p>
+                            <p style="color:red">Approval Awaiting from government before releasing money</p>
+                          </div>
+                          <div id="menu3" class="tab-pane fade">
+                            <p>Money to be Released:&nbsp;&nbsp; <strong>Rs40000</strong></p>
+                            <p>Status:&nbsp;&nbsp; <strong>Ongoing</strong></p>
+                          </div>
+                          <div id="menu4" class="tab-pane fade">
+                            <p>Money to be Released:&nbsp;&nbsp; <strong>Rs40000</strong></p>
+                            <p>Status:&nbsp;&nbsp; <strong>Pending</strong></p>
+                          </div>
+                          <div id="menu5" class="tab-pane fade">
+                            <p>Money to be Released:&nbsp;&nbsp; <strong>Rs40000</strong></p>
+                            <p>Status:&nbsp;&nbsp; <strong>Pending</strong></p>
+                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -292,13 +360,13 @@ h2{
             <div id="products" class="row list-group">
                 <div class="item  col-xs-4 col-lg-4">
                     <div class="thumbnail">
-                        <img class="group list-group-image" src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="" />
+                        <img class="group list-group-image mainimage" src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Paravur_Railway_Station_Name_Board.jpg" alt="" />
                         <div class="caption">
-                            <a data-toggle="modal" data-target="#detailsModal"><h4 class="group inner list-group-item-heading">Yojna</h4></a>
+                            <a data-toggle="modal" data-target="#detailsModal"><h4 class="group inner list-group-item-heading">Pradhan Mantri Gram Sadak Yojna</h4></a>
                             <p class="group inner list-group-item-text">
-                                Area:&nbsp&nbsp<strong>New Delhi</strong><br>
+                                Area:&nbsp&nbsp<strong>Paravur</strong><br>
                                 Votes:&nbsp&nbsp<strong>0</strong><br>
-                                Population:&nbsp&nbsp<strong>5</strong></p><br></p>
+                                Population:&nbsp&nbsp<strong>200</strong></p><br></p>
                             <div class="row">
                                 <div class="col-xs-12 col-md-6">
                                     <p class="lead">
@@ -316,9 +384,9 @@ h2{
                         <img class="group list-group-image" src="https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg" alt="" />
                         <div class="caption">
                             <h4 class="group inner list-group-item-heading">
-                                Yojna</h4>
+                                Pradhan Mantri Gram Sadak Yojna</h4>
                             <p class="group inner list-group-item-text">
-                                Area:&nbsp&nbsp<strong>New Delhi</strong><br>
+                                Area:&nbsp&nbsp<strong>Paravur</strong><br>
                                 Votes:&nbsp&nbsp<strong>0</strong><br>
                                 Population:&nbsp&nbsp<strong>5</strong></p><br></p>
                             <div class="row">
