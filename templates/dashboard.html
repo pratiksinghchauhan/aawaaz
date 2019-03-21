@@ -181,21 +181,25 @@ h2{
                     <th><span class="glyphicon glyphicon-user"></span> Project Name</th>
                     <th><i class="fa fa-inr" style="font-size:24px"></i> Amount</th>
                     <th><span class="glyphicon glyphicon-pencil"></span> Status</th>
-                    <th><span class="glyphicon glyphicon-pencil"></span> Remarks</th>
+                    <th><span class="glyphicon glyphicon-asterisk"></span> Remarks</th>
+                    <th><span class="glyphicon glyphicon-time"></span> Deadline </th>
                 </tr>
 
                 <tr>
                          <td> <a href="" data-toggle="modal" data-target="#detailsModal">Pradhan Mantri Gram Sadak Yojna</a></td>
                          <td>200000</td>
-                         <td style="color:red;">Phase 3 Payment Awaiting</td>
+                         <td style="color:red;">On Hold</td>
                          <td>Inspection for Phase 2 Payments</td>
+                         <td>N.A.</td>
                 </tr>
 
                 <tr>
                          <td><a>Narmada Valley Dam Project</a></td>
                          <td>150000</td>
-                         <td style="color:green;">Complete Payment Recieved</td>
+                         <td style="color:green;">Ongoing for phase 3</td>
                          <td>None</td>
+                         <td id="demo"><span class="glyphicon glyphicon-clock"></span> </td>
+                         
                 </tr>
 
             </table>
@@ -303,34 +307,36 @@ h2{
     <script src="/static/js/expanding.js"></script>
     <script src="/static/js/parsifal.js?v=2"></script>
    
-   <script>
-      $(document).ready(function() {
-    $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
-    $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
-  });
-
-  var $star_rating = $('.star-rating .fa');
-
-var SetRatingStar = function() {
-  return $star_rating.each(function() {
-    if (parseInt($star_rating.siblings('input.rating-value').val()) >= parseInt($(this).data('rating'))) {
-      return $(this).removeClass('fa-star-o').addClass('fa-star');
-    } else {
-      return $(this).removeClass('fa-star').addClass('fa-star-o');
-    }
-  });
-};
-
-$star_rating.on('click', function() {
-  $star_rating.siblings('input.rating-value').val($(this).data('rating'));
-  return SetRatingStar();
-});
-
-SetRatingStar();
-$(document).ready(function() {
-
-});
-
-    </script>
+    <script>
+            // Set the date we're counting down to
+            var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+            
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+            
+              // Get todays date and time
+              var now = new Date().getTime();
+                
+              // Find the distance between now and the count down date
+              var distance = countDownDate - now;
+                
+              // Time calculations for days, hours, minutes and seconds
+              var days = Math.floor(distance / (100000 * 60 * 60 * 24));
+              var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+              var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+              var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+              // Output the result in an element with id="demo"
+              document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+              + minutes + "m " + seconds + "s ";
+                
+              // If the count down is over, write some text 
+              if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "EXPIRED";
+              }
+            }, 1000);
+            </script>
   </body>
   </html>
+
