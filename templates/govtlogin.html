@@ -142,6 +142,46 @@ h2{
   </head>
   <body>
 
+  <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Create a Mandate</h4>
+              </div>
+              <div class="modal-body">
+                      <form method="POST" action="/createmandate/">
+                          {% csrf_token %}
+                            Payee Name:
+                              <input type="text" class="form-control" name="payee" placeholder="Payee"><br>
+                            Payee UPI:
+                              <input type="text" class="form-control" name="payeeupi" placeholder="Payee UPI"><br>
+                            Amount:
+                              <input type="number" class="form-control" name="amount" placeholder="Amount"><br>
+                              <label for="sel1">Recurrance:</label>
+                                <select class="form-control" id="sel1" name="recurrance">
+                                    <option value='weekly'>Weekly</option>
+                                    <option value='monthly'>Monthly</option>
+                                    <option value='yearly'>Yearly</option>
+                                </select>
+                            PIN:
+                              <input type="password" class="form-control" name="pin" placeholder="UPI PIN"><br>  
+                            Project Name:
+                              <input type="text" class="form-control" name="projectname" placeholder="Project Name"><br>                 
+                            Area Code:
+                              <input type="text" class="form-control" id="areacode" name="number" placeholder="Area Code"><br>
+                            Cutoff Votes:
+                              <input type="text" class="form-control" name="number" placeholder="Area Code"><br>                         
+                            <input type="submit" value="Submit" name="Done" class="btn btn-success btn-lg btn-block">
+                      </form>
+              </div>
+            </div>
+        
+          </div>
+        </div>
+
 
     <div class="wrapper">
       <header>
@@ -170,14 +210,13 @@ h2{
                 {{msg}}
             {%endif%}
           </div>
-          <h3 style="text-align:center">XYZ Constructions ltd.</h3>
+          <h3 style="text-align:center">Government Login</h3>
+          <a style="text-align:center" class="btn btn-success" data-toggle="modal" data-target="#myModal">Create Mandate</a>
           <!-- <h3 style="text-align:center">Ongoing Projects:</h3> -->
           <h4 style="text-align:center">Please click on project to know more about it</h4>
 
         <br><br><br><br>
-          <table class="table table-bordered">
-                
-               
+          <table class="table table-bordered">   
                 <tr>
                     <th><span class="glyphicon glyphicon-user"></span> Project Name</th>
                     <th><i class="fa fa-inr" style="font-size:24px"></i> Amount</th>
@@ -185,7 +224,7 @@ h2{
                     <th><span class="glyphicon glyphicon-asterisk"></span> Remarks</th>
                     <th><span class="glyphicon glyphicon-time"></span> Deadline </th>
                 </tr>
-
+                
                 <tr>
                          <td> <a href="" data-toggle="modal" data-target="#detailsModal">Pradhan Mantri Gram Sadak Yojna</a></td>
                          <td>200000</td>
@@ -308,6 +347,10 @@ h2{
     <script src="/static/js/parsifal.js?v=2"></script>
    
     <script>
+    var myInput = document.getElementById("areacode");
+    if (myInput && myInput.value) {
+        alert("My input has a value!");
+    }
             // Set the date we're counting down to
             var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
             

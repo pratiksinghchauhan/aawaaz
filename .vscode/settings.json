@@ -1,0 +1,4 @@
+{
+    "python.pythonPath": "/home/pratik/Desktop/misc/vawaaz/bin/python",
+    "python.formatting.provider": "black"
+}

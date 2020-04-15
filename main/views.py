@@ -24,8 +24,8 @@ def sendmessage(sellerName,buyerName,mobileSeller,domain,amount):
         response = requests.request("POST", url, data=payload)
         result_js=response.json()
         print(result_js)
-    except Exception,e:
-        print e
+    except:
+        print (e)
     return
 
 def transferDomain(request):
@@ -35,3 +35,7 @@ def transferDomain(request):
 
 def contractorDashboard(request):
     return render(request,"dashboard.html")
+
+
+def govtDashboard(request):
+    return render(request,"govtlogin.html")
