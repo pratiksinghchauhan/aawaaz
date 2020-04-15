@@ -16,7 +16,6 @@ payeeaddress = "testpayee@oksbi"
 recurrance = "ONETIME"
 url = "https://api.infinit.co.in/upi/2.0/ReqMandate/2.0/urn:txnid:" + transactionId
 headers = {'Authorization': 'Bearer 084cbe55-72de-313b-93e3-040a2ab07da5', 'Content-Type' : 'application/xml'}
-print(transactionId)
 test = """
 <upi:ReqMandate xmlns:upi="http://npci.org/upi/schema/">
     <Head ver="2.0" ts="{ts}" orgId="112233" msgId="{messageId}"/>
@@ -24,7 +23,7 @@ test = """
         <Tag name="PAYREQSTART" value="{ts}"/>
         <Tag name="PAYREQEND" value="{ts}"/>
     </Meta>
-    <Txn id="{txnId}" note="Mandate" custRef="722217098761" refId="XYA5447D86914C14AC1B0A4C4A036B387B3" purpose="00" refUrl="http://axis.com/upi" ts="2018-02-17T13:39:56.040+05:30" initiationMode="00" type="CREATE" refCategory="00" initiatedBy="PAYER">
+    <Txn id="{txnId}" note="Mandate" custRef="722217098761" refId="XYA5447D86914C14AC1B0A4C4A036B387B3" purpose="00" refUrl="http://axis.com/upi" ts="2018-02-17T13:39:56.040+05:30" initiationMode="00" type="CREATE" refCategory="00" initiatedBy="PAYER" >
         <Rules>
             <Rule name="EXPIREAFTER" value="10"/>
         </Rules>
