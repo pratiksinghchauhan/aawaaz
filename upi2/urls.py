@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from main.views import transferDomain,contractorDashboard, govtDashboard
+from main.views import transferDomain,contractorDashboard, govtDashboard,createMandate,approve
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^profile/',contractorDashboard ),
     url(r'^govtprofile/',govtDashboard ),
-     url(r'^',transferDomain ),
+    url(r'^approve/',approve ),
+    url(r'^createmandate/',createMandate ),
+    url(r'^',transferDomain ),
 ]

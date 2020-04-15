@@ -141,7 +141,6 @@ h2{
     
   </head>
   <body>
-
   <div id="myModal" class="modal fade" role="dialog">
           <div class="modal-dialog">
         
@@ -157,17 +156,21 @@ h2{
                             Payee Name:
                               <input type="text" class="form-control" name="payee" placeholder="Payee"><br>
                             Payee UPI:
-                              <input type="text" class="form-control" name="payeeupi" placeholder="Payee UPI"><br>
+                              <input type="text" class="form-control" name="payeeaddress" placeholder="Payee UPI"><br>
                             Amount:
                               <input type="number" class="form-control" name="amount" placeholder="Amount"><br>
                               <label for="sel1">Recurrance:</label>
                                 <select class="form-control" id="sel1" name="recurrance">
-                                    <option value='weekly'>Weekly</option>
-                                    <option value='monthly'>Monthly</option>
-                                    <option value='yearly'>Yearly</option>
+                                    <option value='ONETIME'>ONETIME</option>
+                                    <option value='DAILY'>DAILY</option>
+                                    <option value='WEEKLY'>WEEKLY</option>
+                                    <option value='FORTNIGHTLY'>FORTNIGHTLY</option>
+                                    <option value='MONTHLY'>MONTHLY</option>
+                                    <option value='BIMONTHLY'>BIMONTHLY</option>
+                                    <option value='QUARTERLY'>QUARTERLY</option>
+                                    <option value='HALFYEARLY'>HALFYEARLY</option>
+                                    <option value='YEARLY'>YEARLY</option>
                                 </select>
-                            PIN:
-                              <input type="password" class="form-control" name="pin" placeholder="UPI PIN"><br>  
                             Project Name:
                               <input type="text" class="form-control" name="projectname" placeholder="Project Name"><br>                 
                             Area Code:
@@ -274,7 +277,7 @@ h2{
                                     <p>Money to be Released:&nbsp;&nbsp; <strong>Rs40000</strong></p>
                                     <p>Status:&nbsp;&nbsp; <strong>Voting Done</strong></p>
                                     <p>Votes in Favour:&nbsp;&nbsp; 40%</p>
-                                    <p style="color:red">Approval Awaiting from government before releasing money</p>
+                                    <p style="color:red">Approval Awaiting <a href="/approve">Approve</a></p>
                                   </div>
                                   <div id="menu3" class="tab-pane fade">
                                     <p>Money to be Released:&nbsp;&nbsp; <strong>Rs40000</strong></p>

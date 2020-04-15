@@ -28,7 +28,7 @@ def createMandate(request):
     ts = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "+05:30"
     amount = request.POST.get("amount")
     name = "TestMandate"
-    payervpa = request.POST.get("payervpa")
+    payervpa = "testvpa@oksbi"
     payeeaddress = request.POST.get("payeeaddress")
     recurrance = request.POST.get("recurrance")
     url = "https://api.infinit.co.in/upi/2.0/ReqMandate/2.0/urn:txnid:" + transactionId
@@ -88,6 +88,7 @@ def createMandate(request):
     data = '<upi:ReqPay xmlns:upi="http://npci.org/upi/schema/"><Head ver="2.0" ts="2018-02-17T13:39:54.939+05:30" orgId="112233" msgId="'+messageId+'"/><Txn id="'+transactionId+'" note="testpay" custRef="804813039157" refId="804813039157" refUrl="http://axis.com/upi" ts="2018-02-17T13:39:54.944+05:30" type="PAY" initiationMode="12" purpose="00"/><Payer addr="ram@axis" name="ram" seqNum="1" type="ENTITY" code="0000"><Info><Identity id="058010100083492" type="ACCOUNT" verifiedName="Ram"/><Rating VerifiedAddress="TRUE"/></Info><Device><Tag name="MOBILE" value="918149033167"/><Tag name="GEOCODE" value="34.7273,74.8278"/><Tag name="LOCATION" value="pune"/><Tag name="IP" value="192.68.0.12"/><Tag name="TYPE" value="MOB"/><Tag name="ID" value="3356"/><Tag name="OS" value="ios"/><Tag name="APP" value="10000629091"/><Tag name="CAPABILITY" value="1234556789"/></Device><Ac addrType="ACCOUNT"><Detail name="ACTYPE" value="SAVINGS"/><Detail name="ACNUM" value="050000"/><Detail name="IFSC" value="IFSC3567655"/></Ac><Creds><Cred type="PIN" subType="MPIN"><Data code="NPCI" ki="20150822">base-64 encoded/encrypted authentication data</Data></Cred></Creds><Amount value="05.00" curr="INR"><Split name="PURCHASE" value="1"/></Amount></Payer><Payees><Payee addr="laxmi@boi" name="AS" seqNum="1" type="PERSON" code="4000"><Device><Tag name="MOBILE" value="918149033167"/><Tag name="GEOCODE" value="34.7273,74.8278"/><Tag name="LOCATION" value="pune"/><Tag name="IP" value="192.68.0.12"/><Tag name="TYPE" value="MOB"/><Tag name="ID" value="3356"/><Tag name="OS" value="ios"/><Tag name="APP" value="10000629091"/><Tag name="CAPABILITY" value="1234556789"/></Device><Amount value="05.00" curr="INR"><Split name="PURCHASE" value="1"/></Amount></Payee></Payees></upi:ReqPay>'
     r = requests.post(url = url, data = o, headers =  headers)
     print(r.content)
+    return render(request,"govtlogin.html",{"msg": "Mandate Created with TransactionId : " + transactionId})
 
 def revokeMandate(request):
     transactionId =  str(uuid.uuid4())
@@ -95,11 +96,11 @@ def revokeMandate(request):
     messageId =  str(uuid.uuid4())
     messageId = 'NPC' + messageId.replace('-', '')
     ts = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "+05:30"
-    amount = request.POST.get("amount")
+    amount = "10000.00"
     name = "TestMandate"
-    payervpa = request.POST.get("payervpa")
-    payeeaddress = request.POST.get("payeeaddress")
-    recurrance = request.POST.get("recurrance")
+    payervpa = "testvpa@oksbi"
+    payeeaddress = "testpayee@oksbi"
+    recurrance = "ONETIME"
     url = "https://api.infinit.co.in/upi/2.0/ReqMandate/2.0/urn:txnid:" + transactionId
     headers = {'Authorization': 'Bearer 084cbe55-72de-313b-93e3-040a2ab07da5', 'Content-Type' : 'application/xml'}
     test = """
@@ -157,3 +158,7 @@ def revokeMandate(request):
     data = '<upi:ReqPay xmlns:upi="http://npci.org/upi/schema/"><Head ver="2.0" ts="2018-02-17T13:39:54.939+05:30" orgId="112233" msgId="'+messageId+'"/><Txn id="'+transactionId+'" note="testpay" custRef="804813039157" refId="804813039157" refUrl="http://axis.com/upi" ts="2018-02-17T13:39:54.944+05:30" type="PAY" initiationMode="12" purpose="00"/><Payer addr="ram@axis" name="ram" seqNum="1" type="ENTITY" code="0000"><Info><Identity id="058010100083492" type="ACCOUNT" verifiedName="Ram"/><Rating VerifiedAddress="TRUE"/></Info><Device><Tag name="MOBILE" value="918149033167"/><Tag name="GEOCODE" value="34.7273,74.8278"/><Tag name="LOCATION" value="pune"/><Tag name="IP" value="192.68.0.12"/><Tag name="TYPE" value="MOB"/><Tag name="ID" value="3356"/><Tag name="OS" value="ios"/><Tag name="APP" value="10000629091"/><Tag name="CAPABILITY" value="1234556789"/></Device><Ac addrType="ACCOUNT"><Detail name="ACTYPE" value="SAVINGS"/><Detail name="ACNUM" value="050000"/><Detail name="IFSC" value="IFSC3567655"/></Ac><Creds><Cred type="PIN" subType="MPIN"><Data code="NPCI" ki="20150822">base-64 encoded/encrypted authentication data</Data></Cred></Creds><Amount value="05.00" curr="INR"><Split name="PURCHASE" value="1"/></Amount></Payer><Payees><Payee addr="laxmi@boi" name="AS" seqNum="1" type="PERSON" code="4000"><Device><Tag name="MOBILE" value="918149033167"/><Tag name="GEOCODE" value="34.7273,74.8278"/><Tag name="LOCATION" value="pune"/><Tag name="IP" value="192.68.0.12"/><Tag name="TYPE" value="MOB"/><Tag name="ID" value="3356"/><Tag name="OS" value="ios"/><Tag name="APP" value="10000629091"/><Tag name="CAPABILITY" value="1234556789"/></Device><Amount value="05.00" curr="INR"><Split name="PURCHASE" value="1"/></Amount></Payee></Payees></upi:ReqPay>'
     r = requests.post(url = url, data = o, headers =  headers)
     print(r.content)
+    return render(request,"govtlogin.html",{"msg": "Mandate Revoked with TransactionId : " + transactionId})
+
+def approve(request):
+    return render(request,"govtlogin.html",{"msg": "Thanks for Approving! Mandate with transactionid  NPCf22ee9fe2aa049cf9d0cbe650715141d is on track again"})
