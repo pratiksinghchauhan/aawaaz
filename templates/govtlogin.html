@@ -221,6 +221,7 @@ h2{
         <br><br><br><br>
           <table class="table table-bordered">   
                 <tr>
+                    <th><span class="glyphicon glyphicon-filter "></span> Transaction ID</th>
                     <th><span class="glyphicon glyphicon-user"></span> Project Name</th>
                     <th><i class="fa fa-inr" style="font-size:24px"></i> Amount</th>
                     <th><span class="glyphicon glyphicon-pencil"></span> Status</th>
@@ -229,7 +230,8 @@ h2{
                 </tr>
                 
                 <tr>
-                         <td> <a href="" data-toggle="modal" data-target="#detailsModal">Pradhan Mantri Gram Sadak Yojna</a></td>
+                         <td> <a href="" data-toggle="modal" data-target="#detailsModal">NPC0530de7ebbc444dg6c31f6d5b623v2a</a></td>
+                         <td> <a href="" data-toggle="modal" data-target="#detailsModal">Pradhan Mantri Sadak Yojna</a></td>
                          <td>200000</td>
                          <td style="color:red;">On Hold</td>
                          <td>Inspection for Phase 2 Payments</td>
@@ -237,13 +239,25 @@ h2{
                 </tr>
 
                 <tr>
+                         <td> <a href="" data-toggle="modal" data-target="#detailsModal">NPC0530de7ebbc44002b45gf43dsawemkl7</a></td>
                          <td><a>Narmada Valley Dam Project</a></td>
                          <td>150000</td>
-                         <td style="color:green;">Ongoing for phase 3</td>
+                         <td style="color:green;">Ongoing P3</td>
                          <td>None</td>
                          <td id="demo"><span class="glyphicon glyphicon-clock"></span> </td>
                          
                 </tr>
+
+                {% for transaction in transactions %}
+                  <tr>
+                      <td> <a href="" data-toggle="modal" data-target="#detailsModal">{{transaction.transaction_id}}</a></td>
+                      <td><a>{{transaction.project_name}}</a></td>
+                      <td>{{transaction.amount}}</td>
+                      <td style="color:green;">Ongoing P1</td>
+                      <td>None</td>
+                      <td id="demo"><span class="glyphicon glyphicon-clock"></span>Coming Soon </td> 
+                  </tr>
+                {% endfor %}
 
             </table>
 

@@ -6,17 +6,16 @@ from django.db import models
 # Create your models here.
 
 
-class listedTransfers(models.Model):
-    buyer = models.CharField(max_length=200)
-    seller = models.CharField(max_length=200)
+class listed_projects(models.Model):
+    transaction_id = models.CharField(max_length=200,primary_key=True)
+    payee = models.CharField(max_length=200)
+    payer = models.CharField(max_length=200)
     payeeva = models.CharField(max_length=200)
     payerva = models.CharField(max_length=200)
-    domain = models.CharField(max_length=200)
-    payeemobile =  models.CharField(max_length=200)
-    payermobile = models.CharField(max_length=200)
-    selleraccount = models.CharField(max_length=200)
     amount = models.CharField(max_length=200)
-    state = models.BooleanField(default=False)
+    recurrance = models.CharField(max_length=200)
+    project_name = models.CharField(max_length=200)
+    cutoff_votes = models.CharField(max_length=200)
+    status = models.CharField(max_length=200)
+    votes = models.IntegerField(null=True)
     ts = models.DateTimeField(auto_now_add=True)
-    def __str__(self):
-        return self.buyer 

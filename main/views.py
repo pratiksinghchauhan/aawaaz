@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from .models import listedTransfers
+from .models import listed_projects
 import requests
 import uuid
 import datetime
@@ -18,7 +18,7 @@ def contractorDashboard(request):
 
 
 def govtDashboard(request):
-    return render(request,"govtlogin.html")
+    return render(request,"govtlogin.html",{ "transactions": listed_projects.objects.all()})
 
 def createMandate(request):
     transactionId =  str(uuid.uuid4())
@@ -85,10 +85,22 @@ def createMandate(request):
     """
     o = test.format(payeeaddress=payeeaddress, payervpa=payervpa, name=name, amount =amount, txnId =transactionId, ts = ts , messageId = messageId, recurrance = recurrance)
     print(o)
-    data = '<upi:ReqPay xmlns:upi="http://npci.org/upi/schema/"><Head ver="2.0" ts="2018-02-17T13:39:54.939+05:30" orgId="112233" msgId="'+messageId+'"/><Txn id="'+transactionId+'" note="testpay" custRef="804813039157" refId="804813039157" refUrl="http://axis.com/upi" ts="2018-02-17T13:39:54.944+05:30" type="PAY" initiationMode="12" purpose="00"/><Payer addr="ram@axis" name="ram" seqNum="1" type="ENTITY" code="0000"><Info><Identity id="058010100083492" type="ACCOUNT" verifiedName="Ram"/><Rating VerifiedAddress="TRUE"/></Info><Device><Tag name="MOBILE" value="918149033167"/><Tag name="GEOCODE" value="34.7273,74.8278"/><Tag name="LOCATION" value="pune"/><Tag name="IP" value="192.68.0.12"/><Tag name="TYPE" value="MOB"/><Tag name="ID" value="3356"/><Tag name="OS" value="ios"/><Tag name="APP" value="10000629091"/><Tag name="CAPABILITY" value="1234556789"/></Device><Ac addrType="ACCOUNT"><Detail name="ACTYPE" value="SAVINGS"/><Detail name="ACNUM" value="050000"/><Detail name="IFSC" value="IFSC3567655"/></Ac><Creds><Cred type="PIN" subType="MPIN"><Data code="NPCI" ki="20150822">base-64 encoded/encrypted authentication data</Data></Cred></Creds><Amount value="05.00" curr="INR"><Split name="PURCHASE" value="1"/></Amount></Payer><Payees><Payee addr="laxmi@boi" name="AS" seqNum="1" type="PERSON" code="4000"><Device><Tag name="MOBILE" value="918149033167"/><Tag name="GEOCODE" value="34.7273,74.8278"/><Tag name="LOCATION" value="pune"/><Tag name="IP" value="192.68.0.12"/><Tag name="TYPE" value="MOB"/><Tag name="ID" value="3356"/><Tag name="OS" value="ios"/><Tag name="APP" value="10000629091"/><Tag name="CAPABILITY" value="1234556789"/></Device><Amount value="05.00" curr="INR"><Split name="PURCHASE" value="1"/></Amount></Payee></Payees></upi:ReqPay>'
     r = requests.post(url = url, data = o, headers =  headers)
+    newRecord = listed_projects(
+        transaction_id = transactionId,
+        payee = "Contractor1",
+        payer = "GOI",
+        payeeva = payeeaddress,
+        payerva = payervpa,
+        amount = amount,
+        recurrance = recurrance,
+        project_name = request.POST.get("projectname"),
+        cutoff_votes =request.POST.get("number"),
+        status = "CREATED"
+    )
+    newRecord.save()
     print(r.content)
-    return render(request,"govtlogin.html",{"msg": "Mandate Created with TransactionId : " + transactionId})
+    return render(request,"govtlogin.html",{"msg": "Mandate Created with TransactionId : " + transactionId, "transactions": listed_projects.objects.all() })
 
 def revokeMandate(request):
     transactionId =  str(uuid.uuid4())
@@ -161,4 +173,11 @@ def revokeMandate(request):
     return render(request,"govtlogin.html",{"msg": "Mandate Revoked with TransactionId : " + transactionId})
 
 def approve(request):
-    return render(request,"govtlogin.html",{"msg": "Thanks for Approving! Mandate with transactionid  NPCf22ee9fe2aa049cf9d0cbe650715141d is on track again"})
+    return render(request,"govtlogin.html",{"msg": "Thanks for Approving! Mandate with transactionid NPC0530de7ebbc444dg6c31f6d5b623v2a will be revoted", "transactions": listed_projects.objects.all()})
+
+
+def transactionProgress():
+    transactions = listed_projects.objects.filter(cutoff_votes__gte = self.votes)
+    transactions.status = "REVOKED"
+    #Add API to send Message
+    return True
